@@ -5,20 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features - Boredom Hub</title>
     <link rel="stylesheet" href="styles.css">
-   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="manifest" href="manifest.json"> <!-- Ensure this file exists -->
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABSElEQVR42mNkAIJbnr77B2OXX35N+PyS+bv3v6K6dLFOQF2YPlfzp5//nBhPnpAm/v1w+bLTv+Xzg1/9C6XOl99+/eNXYIFLvmgLgB0g6MNhANIPuHhQN2ASz9+BcjeVgrqF2D6Qdw/2ElwMocg8I2OXMdAbkApCwLEm3LsAGInNMiPfj6CPH2/tnP7zdkTcCZHY1ALp9+7d5vx+M0+64Byvzn5kX9ubff3evLsP14nMxhAMmD1eAII4hR7cBgohw3wQ6D+YYsA8B3kKmBUg5lyjIAVNwFYH0lQ3YC5UIZKcInNAEBtIPwBuIXuOCjGsQsAAAAASUVORK5CYII=">
 </head>
 <body>
     <div class="sidebar">
         <a href="index.html">Home</a>
         <a href="games.html">Games</a>
         <a href="about.html">About Us</a>
-        <a href="contact.html">Contact</a>   
-        <a href="chat.html">Chat</a> 
-        <a href="rabbitAI.html">rabbitAI calculator</a>
-        <a href="partners.html">Our Partners</a>
-        <a href="features.html">Features</a>
-         <img src="Evicly, this is boredom hub logo (1).png" alt="Boredom Hub Logo" style="width: 150px; margin-top: 20px;">
+        <a href="contact.html">Contact</a>
+        <a href="chat.html">Chat</a>
+        <a href="rabbitAI.html" target="_blank">rabbitAI calculator</a>
+        <a href="partners.html" target="_blank">Our Partners</a>
+      <a href="features.html" target="_blank">Features</a>
     </div>
     <div class="content">
         <h1>Features</h1>
@@ -27,48 +25,11 @@
             <!-- Games will be added here -->
         </div>
         <script>
-            
-
-            let deferredPrompt;
-
-            window.addEventListener('beforeinstallprompt', (event) => {
-                event.preventDefault();
-                deferredPrompt = event;
-                document.getElementById("installApp").style.display = "block";
-            });
-
-            function installApp() {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then((choiceResult) => {
-                        if (choiceResult.outcome === 'accepted') {
-                            console.log('User installed the app');
-                        } else {
-                            console.log('User dismissed the installation');
-                        }
-                        deferredPrompt = null;
-                    });
-                }
-            }
-
-            const features = [
+      
+            const games = [
                 { name: "Highly pixelated Shrek movie with no audio", url: "shrekmovie.mp4" },
-                { name: "Download app", action: installApp }
             ];
 
-            const gamesList = document.getElementById("games-list");
-            features.forEach(feature => {
-                const button = document.createElement("button");
-                button.innerText = feature.name;
-                button.classList.add("game-button");
-                if (feature.url) {
-                    button.onclick = () => openInAboutBlank(feature.url);
-                } else if (feature.action) {
-                    button.id = "installApp";
-                    button.style.display = "none";
-                    button.onclick = feature.action;
-                }
-                gamesList.appendChild(button);
             });
         </script>
     </div>
