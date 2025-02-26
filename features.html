@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features - Boredom Hub</title>
     <link rel="stylesheet" href="styles.css">
-   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="manifest" href="manifest.json"> <!-- Ensure this file exists -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="manifest.json"> <!-- Ensure this file exists -->
 </head>
 <body>
     <div class="sidebar">
@@ -18,16 +18,28 @@
         <a href="rabbitAI.html">rabbitAI calculator</a>
         <a href="partners.html">Our Partners</a>
         <a href="features.html">Features</a>
-         <img src="Evicly, this is boredom hub logo (1).png" alt="Boredom Hub Logo" style="width: 150px; margin-top: 20px;">
+        <img src="boredom-hub-logo.png" alt="Boredom Hub Logo" style="width: 150px; margin-top: 20px;">
     </div>
     <div class="content">
         <h1>Features</h1>
         <p>Click a button below to use a feature</p>
         <div id="games-list" class="games-container">
-            <!-- Games will be added here -->
+            <!-- Features will be added here -->
         </div>
+        <button id="installApp" style="display: none;" onclick="installApp()">Download App</button>
+
         <script>
-            
+            function openInAboutBlank(url) {
+                let newTab = window.open('about:blank', '_blank');
+                fetch(url)
+                    .then(response => response.text())
+                    .then(html => {
+                        newTab.document.open();
+                        newTab.document.write(html);
+                        newTab.document.close();
+                    })
+                    .catch(error => console.error('Error loading content:', error));
+            }
 
             let deferredPrompt;
 
@@ -53,7 +65,6 @@
 
             const features = [
                 { name: "Highly pixelated Shrek movie with no audio", url: "shrekmovie.mp4" },
-                { name: "Download app", action: installApp }
             ];
 
             const gamesList = document.getElementById("games-list");
@@ -63,10 +74,6 @@
                 button.classList.add("game-button");
                 if (feature.url) {
                     button.onclick = () => openInAboutBlank(feature.url);
-                } else if (feature.action) {
-                    button.id = "installApp";
-                    button.style.display = "none";
-                    button.onclick = feature.action;
                 }
                 gamesList.appendChild(button);
             });
